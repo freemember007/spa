@@ -22,7 +22,7 @@ console.log(ready)
       ready(
       console.log(document.querySelector('#count2')) //元件仍未准备好，可能跟lit-html为虚拟dom有关
         )
-      })
+      }, [])
     return html`
       <div id="count2">元件2：${count}</div>
       <button type="button" @click=${() => setCount(count + 1)}>Increment</button>
