@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="../node_modules/rax/dist/rax.js"></script>
+    <script src="../node_modules/driver-dom/dist/driver-dom.js"></script>
+    
+    <!-- Don't use this in production: -->
+    <script src="../node_modules/babel-standalone/babel.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="root2"></div>
+    <script type="text/babel">
+      // import {rax} from '/node_modules/rax/dist/rax.js'
+      // @jsx Rax.createElement
+      Rax.render(
+        <h1>Hello, worldd!</h1>,
+        document.getElementById('root'),
+        { driver: DriverDOM }
+      );
+      Rax.render(
+        <h1>Hello, worldd!</h1>,
+        document.getElementById('root2'),
+        { driver: DriverDOM }
+      );
+    </script>
+  </body>
+</html>
