@@ -1,0 +1,62 @@
+<!-- 首页 -->
+
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>x-tag demo</title>
+  <script src="../lib/x-tag-polyfilled.min.js" ></script>
+</head>
+
+<html>
+<body>
+  <x-clock></x-clock>
+  <x-frankenstein></x-frankenstein>
+</body>
+</html>
+
+<script >
+
+// 计数器元件
+xtag.create('x-clock', class extends XTagElement {
+  connectedCallback () {
+    this.start()
+  }
+  start (){
+    this.update()
+    this._interval = setInterval(() => this.update(), 1000)
+  }
+  stop (){
+    this._interval = clearInterval(this._data.interval)
+  }
+  update (){
+    this.textContent = new Date().toLocaleTimeString()
+  }
+  'tap::event' (){
+    if (this._interval) this.stop()
+    else this.start()
+  }
+})
+
+// 修改状态元件
+xtag.create('x-frankenstein', class extends XTagElement {
+  constructor () {
+    super()
+    this.name = 'Frankenstein'
+  }
+  // 计算属性
+  fullname (){ 
+    return this.name + ' aaa'
+  }
+  'click::event' (){
+    this.name = 'xjp'
+    this.render()
+  }
+  '::template(true)' (){
+    return `
+      <h2>I am ${this.name}, my full name is ${this.fullname()}</h2>
+      <span>I was created by a mad scientist</span>
+    `
+  }
+})
+
+</script>
