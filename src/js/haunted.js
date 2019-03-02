@@ -1,12 +1,6 @@
-<!-- 首页 -->
-
-<!doctype html>
-<html lang="en">
-<my-app></my-app>
-<script type="module">
-
-import { html } from './lib/lit-html/lit-html.js'
-import { component, useState, useEffect } from './lib/haunted/web.js'
+import { html } from '../lib/lit-html/lit-html.js'
+import { component, useState, useEffect } from '../lib/haunted/web.js'
+//import ready from '../../node_modules/document-ready'
 
 // 元件一
 function Counter() {
@@ -41,7 +35,4 @@ function Main(){
     </div>
   `
 }
-customElements.define('my-app', component(Main))
-
-</script>
-</html>
+customElements.define('my-app', component(Counter))

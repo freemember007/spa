@@ -1,9 +1,8 @@
 {
   "dependencies": {
-    "babel-standalone": "^6.26.0",
     "document-ready": "^2.0.2",
-    "driver-dom": "1.0.0-beta.6",
-    "rax": "1.0.0-beta.15",
-    "ready": "^0.1.1"
+    "haunted": "^4.2.0",
+    "lit-html": "^1.0.0",
+    "x-tag": "^2.0.1-beta"
   }
 }
