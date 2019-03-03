@@ -1,32 +1,32 @@
-<!-- 首页 -->
-
+<!-- haunted2 demo -->
 <!doctype html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>haunted2 demo</title>
+  <link rel="stylesheet" type="text/css" href="./css/bass.css">
 	<script>
 		window.onerror = (error) => alert(error)
 	</script>
 </head>
 
 <body>
-
   <my-app></my-app>
 
-	<script>
-   // window.onload = () => {
-      function shimport(src) {
-        try {
-          new Function('import("' + src + '")')();
-        } catch (e) {
-          var s = document.createElement('script');
-          s.src = './lib/shimport.js'
-          s.dataset.main = src;
-          document.body.appendChild(s);
-        }
-      }
-      shimport('./js/haunted.js');
-    //}
-	</script>
+  <script>
+  function shimport(src) {
+    try {
+      new Function('import("' + src + '")')()
+    } catch (e) {
+      var s = document.createElement('script')
+      s.src = './lib/shimport.js'
+      s.dataset.main = src;
+      document.head.appendChild(s)
+    }
+  }
+  shimport('./js/haunted.js')
+</script>
 
 </body>
 </html>

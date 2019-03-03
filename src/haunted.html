@@ -1,47 +1,59 @@
 <!-- 首页 -->
-
 <!doctype html>
-<html lang="en">
-<my-app></my-app>
-<script type="module">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>haunted demo</title>
+  <script>
+    window.onerror = (error) => alert(error)
+  </script>
+</head>
 
-import { html } from './lib/lit-html/lit-html.js'
-import { component, useState, useEffect } from './lib/haunted/web.js'
+<body>
+  <my-app></my-app>
 
-// 元件一
-function Counter() {
-  const [count, setCount] = useState(0)
+  <script type="module">
 
-  return html`
-    <div id="count">元件1：${count}</div>
-    <button type="button" @click=${() => setCount(count + 1)}>Increment</button>
-  `
-}
+  import { html } from './lib/lit-html/lit-html.js'
+  import { component, useState, useEffect } from './lib/haunted/web.js'
 
-// 元件二
-function Counter2() {
-  const [count, setCount] = useState(0)
+  // 元件一
+  function Counter() {
+    const [count, setCount] = useState(0)
 
-  useEffect(_ => {
-    throw document.querySelector('#count2') //元件仍未准备好，可能跟lit-html为虚拟dom有关
-  }, [])
+    return html`
+      <div id="count">元件1：${count}</div>
+      <button type="button" @click=${() => setCount(count + 1)}>Increment</button>
+    `
+  }
 
-  return html`
-    <div id="count2">元件2：${count}</div>
-    <button type="button" @click=${() => setCount(count + 1)}>Increment</button>
-  `
-}
+  // 元件二
+  function Counter2() {
+    const [count, setCount] = useState(0)
 
-// Main
-function Main(){
-  return html /*syntax:html*/`
-    <div>
-      ${Counter()}
-      ${Counter2()}
-    </div>
-  `
-}
-customElements.define('my-app', component(Main))
+    useEffect(_ => {
+      throw document.querySelector('#count2') //元件仍未准备好，可能跟lit-html为虚拟dom有关
+    }, [])
+
+    return html`
+      <div id="count2">元件2：${count}</div>
+      <button type="button" @click=${() => setCount(count + 1)}>Increment</button>
+    `
+  }
+
+  // Main
+  function Main(){
+    return html /*syntax:html*/`
+      <div>
+        ${Counter()}
+        ${Counter2()}
+      </div>
+    `
+  }
+  customElements.define('my-app', component(Main))
 
 </script>
+
+</body>
 </html>

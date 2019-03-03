@@ -1,13 +1,12 @@
 import { html } from '../lib/lit-html/lit-html.js'
 import { component, useState, useEffect } from '../lib/haunted/web.js'
-//import ready from '../../node_modules/document-ready'
 
 // 元件一
 function Counter() {
   const [count, setCount] = useState(0)
 
-  return html`
-    <div id="count">元件1：${count}</div>
+  return html /*syntax:html*/`
+    <div id="count" class="border">元件1：${count}</div>
     <button type="button" @click=${() => setCount(count + 1)}>Increment</button>
   `
 }
@@ -15,24 +14,38 @@ function Counter() {
 // 元件二
 function Counter2() {
   const [count, setCount] = useState(0)
+  const [user, setUser] = useState({})
 
   useEffect(_ => {
-    throw document.querySelector('#count2') //元件仍未准备好，可能跟lit-html为虚拟dom有关
+    setTimeout(_ => setUser({ name: 'xjp2' }), 500)
   }, [])
 
-  return html`
-    <div id="count2">元件2：${count}</div>
-    <button type="button" @click=${() => setCount(count + 1)}>Increment</button>
+  function onClick () {
+    document.querySelector('#count2').innerText = 'hi man!'
+  }
+
+  return html /*syntax:html*/`
+    <div id="count2" class="hightlight" @click="${onClick}">
+      元件2：${count}
+    </div>
+    <button type="button" @click=${() => setCount(count + 1)}>
+      Increment
+    </button>
+    ${user.name}
+    <style>
+      .hightlight {
+        color: white;
+        background: red;
+      }
+    </style>
   `
 }
 
 // Main
 function Main(){
-  return html /*syntax:html*/`
-    <div>
-      ${Counter()}
-      ${Counter2()}
-    </div>
+  return html`
+    ${Counter()}
+    ${Counter2()}
   `
 }
-customElements.define('my-app', component(Counter))
+customElements.define('my-app', component(Main, HTMLElement, {useShadowDOM: false}))
