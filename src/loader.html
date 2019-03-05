@@ -7,14 +7,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
   <title>loader demo</title>
-  <!-- preloader Css -->
+  <!-- loader Css -->
   <style type="text/css" media="screen">
-    #preloader,
-    #preloader:before,
-    #preloader:after {
+    #loader,
+    #loader:before,
+    #loader:after {
       border-radius: 50%;
     }
-    #preloader {
+    #loader {
       color: #ffffff;
       font-size: 11px;
       text-indent: -99999em;
@@ -27,12 +27,12 @@
       -ms-transform: translateZ(0);
       transform: translateZ(0);
     }
-    #preloader:before,
-    #preloader:after {
+    #loader:before,
+    #loader:after {
       position: absolute;
       content: '';
     }
-    #preloader:before {
+    #loader:before {
       width: 5.2em;
       height: 10.2em;
       background: #0dc5c1;
@@ -41,10 +41,10 @@
       left: -0.1em;
       -webkit-transform-origin: 5.1em 5.1em;
       transform-origin: 5.1em 5.1em;
-      -webkit-animation: preloader-animation 2s infinite ease 1.5s;
-      animation: preloader-animation 2s infinite ease 1.5s;
+      -webkit-animation: loader-animation 2s infinite ease 1.5s;
+      animation: loader-animation 2s infinite ease 1.5s;
     }
-    #preloader:after {
+    #loader:after {
       width: 5.2em;
       height: 10.2em;
       background: #0dc5c1;
@@ -53,10 +53,10 @@
       left: 4.9em;
       -webkit-transform-origin: 0.1em 5.1em;
       transform-origin: 0.1em 5.1em;
-      -webkit-animation: preloader-animation 2s infinite ease;
-      animation: preloader-animation 2s infinite ease;
+      -webkit-animation: loader-animation 2s infinite ease;
+      animation: loader-animation 2s infinite ease;
     }
-    @-webkit-keyframes preloader-animation {
+    @-webkit-keyframes loader-animation {
       0% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
@@ -66,7 +66,7 @@
         transform: rotate(360deg);
       }
     }
-    @keyframes preloader-animation {
+    @keyframes loader-animation {
       0% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
@@ -81,12 +81,12 @@
 
 <body>
 
-  <!-- 加载preloader -->
+  <!-- 加载loader -->
   <script> 
     void function (document) {
-      var preloader$ = document.createElement("div")
-      preloader$.id = 'preloader'
-      document.body.appendChild(preloader$) 
+      var loader$ = document.createElement("div")
+      loader$.id = 'loader'
+      document.body.appendChild(loader$) 
     }(document)
   </script>
 
@@ -94,9 +94,9 @@
   <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.3.1/dist/css/bootstrap.css">
   <script type="text/javascript" src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
 
-  <!-- 移除preloader -->
+  <!-- 移除loader -->
   <script> 
-    document.body.removeChild(document.querySelector('#preloader')) 
+    document.body.removeChild(document.querySelector('#loader')) 
   </script>
 
   <!-- 某些很耗时的脚本加载完才能显示的dom内容 -->
