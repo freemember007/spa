@@ -1,0 +1,107 @@
+<!-- loader demo -->
+<!-- 页面第一时间显示loader图标 -->
+<!-- 用chrome测试，设置Disable cache和Slow 3G -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>loader demo</title>
+  <!-- preloader Css -->
+  <style type="text/css" media="screen">
+    #preloader,
+    #preloader:before,
+    #preloader:after {
+      border-radius: 50%;
+    }
+    #preloader {
+      color: #ffffff;
+      font-size: 11px;
+      text-indent: -99999em;
+      margin: 55px auto;
+      position: relative;
+      width: 10em;
+      height: 10em;
+      box-shadow: inset 0 0 0 1em;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    #preloader:before,
+    #preloader:after {
+      position: absolute;
+      content: '';
+    }
+    #preloader:before {
+      width: 5.2em;
+      height: 10.2em;
+      background: #0dc5c1;
+      border-radius: 10.2em 0 0 10.2em;
+      top: -0.1em;
+      left: -0.1em;
+      -webkit-transform-origin: 5.1em 5.1em;
+      transform-origin: 5.1em 5.1em;
+      -webkit-animation: preloader-animation 2s infinite ease 1.5s;
+      animation: preloader-animation 2s infinite ease 1.5s;
+    }
+    #preloader:after {
+      width: 5.2em;
+      height: 10.2em;
+      background: #0dc5c1;
+      border-radius: 0 10.2em 10.2em 0;
+      top: -0.1em;
+      left: 4.9em;
+      -webkit-transform-origin: 0.1em 5.1em;
+      transform-origin: 0.1em 5.1em;
+      -webkit-animation: preloader-animation 2s infinite ease;
+      animation: preloader-animation 2s infinite ease;
+    }
+    @-webkit-keyframes preloader-animation {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes preloader-animation {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 加载preloader -->
+  <script> 
+    void function (document) {
+      var preloader$ = document.createElement("div")
+      preloader$.id = 'preloader'
+      document.body.appendChild(preloader$) 
+    }(document)
+  </script>
+
+  <!-- 某些很耗时的脚本  -->
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.3.1/dist/css/bootstrap.css">
+  <script type="text/javascript" src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+
+  <!-- 移除preloader -->
+  <script> 
+    document.body.removeChild(document.querySelector('#preloader')) 
+  </script>
+
+  <!-- 某些很耗时的脚本加载完才能显示的dom内容 -->
+  <h1>hello world!</h1>
+
+</body>
+</html>
+
