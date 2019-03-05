@@ -1,0 +1,31 @@
+<!-- unload demo -->
+<!-- web页面关闭事件处理 -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>unload demo</title>
+  <!-- 加载loader -->
+  <script> 
+    window.onerror = err => alert(JSON.stringify(err))
+//    window.onerror = err => alert(typeof err === 'object' && JSON.stringify(err) || err)
+    window.addEventListener("beforeunload", function (event) {
+      // Cancel the event as stated by the standard.
+      event.preventDefault();
+      // Chrome requires returnValue to be set.
+      event.returnValue = '';
+    });
+  </script>
+
+
+</head>
+
+<body>
+<!-- <script type="text/javascript">throw {code:1, msg: 'aaa'}</script> -->
+  <h1>hello world!</h1>
+  
+
+</body>
+</html>
+
